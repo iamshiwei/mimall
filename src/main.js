@@ -3,12 +3,14 @@ import App from "./App.vue";
 import router from "./router/index";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import env from './env'
 
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-axios.defaults.baseURL = "/api";
+console.log(env.baseURL)
+axios.defaults.baseURL = env.baseURL;
 axios.defaults.timeout = 8000;
 // 接口错误拦截
 axios.interceptors.response.use(function (response) {
