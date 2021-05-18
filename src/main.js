@@ -3,14 +3,18 @@ import App from "./App.vue";
 import router from "./router/index";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import env from './env'
+// import env from './env'
 
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-console.log(env.baseURL)
-axios.defaults.baseURL = env.baseURL;
+// mock开关
+const mock = true;
+if (mock) {
+  require('./mock/api');
+} 
+axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 8000;
 // 接口错误拦截
 axios.interceptors.response.use(function (response) {

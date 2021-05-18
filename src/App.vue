@@ -5,13 +5,18 @@
 </template>
 
 <script>
-import storage from "./storage/index";
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      res: {},
+    };
+  },
   mounted() {
-    storage.setItem("a", 1);
-    storage.setItem("b", 2);
+    this.axios.get("/user/login").then((res) => {
+      this.res = res;
+    });
   },
 };
 </script>
